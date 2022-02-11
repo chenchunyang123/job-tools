@@ -8,10 +8,6 @@ on:
 jobs:
   build:
     name: Build and deploy gh-pages
-    env:
-      USER_NAME   : chenchunyang123
-      USER_EMAIL  : ccy274002525@163.com
-      PUBLISH_DIR : ./dist
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,10 +26,10 @@ jobs:
         npm run build
     - name: Commit files
       run: |
-        cd $PUBLISH_DIR
+        cd ./dist
         git init
-        git config --local user.email $USER_NAME
-        git config --local user.name $USER_EMAIL
+        git config --local user.email chenchunyang123
+        git config --local user.name ccy274002525@163.com
         git status
         git remote add origin https://github.com/chenchunyang123/job-tools.git
         git checkout -b gh-pages
